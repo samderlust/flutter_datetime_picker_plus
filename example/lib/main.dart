@@ -106,6 +106,7 @@ class HomePage extends StatelessWidget {
             TextButton(
                 onPressed: () {
                   picker.DatePicker.showDatePicker(context,
+                      title: "",
                       showTitleActions: true,
                       minTime: DateTime(2018, 3, 5),
                       maxTime: DateTime(2019, 6, 7),
@@ -132,7 +133,7 @@ class HomePage extends StatelessWidget {
             TextButton(
                 onPressed: () {
                   picker.DatePicker.showTimePicker(context,
-                      showTitleActions: true, onChanged: (date) {
+                      title: "", showTitleActions: true, onChanged: (date) {
                     print('change $date in time zone ' +
                         date.timeZoneOffset.inHours.toString());
                   }, onConfirm: (date) {
@@ -146,7 +147,7 @@ class HomePage extends StatelessWidget {
             TextButton(
                 onPressed: () {
                   picker.DatePicker.showTime12hPicker(context,
-                      showTitleActions: true, onChanged: (date) {
+                      title: "", showTitleActions: true, onChanged: (date) {
                     print('change $date in time zone ' +
                         date.timeZoneOffset.inHours.toString());
                   }, onConfirm: (date) {
@@ -160,6 +161,7 @@ class HomePage extends StatelessWidget {
             TextButton(
                 onPressed: () {
                   picker.DatePicker.showDateTimePicker(context,
+                      title: "",
                       showTitleActions: true,
                       minTime: DateTime(2020, 5, 5, 20, 50),
                       maxTime: DateTime(2020, 6, 7, 05, 09), onChanged: (date) {
@@ -176,7 +178,7 @@ class HomePage extends StatelessWidget {
             TextButton(
                 onPressed: () {
                   picker.DatePicker.showDateTimePicker(context,
-                      showTitleActions: true, onChanged: (date) {
+                      title: "", showTitleActions: true, onChanged: (date) {
                     print('change $date in time zone ' +
                         date.timeZoneOffset.inHours.toString());
                   }, onConfirm: (date) {
@@ -190,7 +192,7 @@ class HomePage extends StatelessWidget {
             TextButton(
                 onPressed: () {
                   picker.DatePicker.showDateTimePicker(context,
-                      showTitleActions: true, onChanged: (date) {
+                      title: "", showTitleActions: true, onChanged: (date) {
                     print('change $date in time zone ' +
                         date.timeZoneOffset.inHours.toString());
                   }, onConfirm: (date) {
@@ -206,7 +208,7 @@ class HomePage extends StatelessWidget {
             TextButton(
                 onPressed: () {
                   picker.DatePicker.showDateTimePicker(context,
-                      showTitleActions: true, onChanged: (date) {
+                      title: "", showTitleActions: true, onChanged: (date) {
                     print('change $date in time zone ' +
                         date.timeZoneOffset.inHours.toString());
                   }, onConfirm: (date) {
@@ -222,7 +224,7 @@ class HomePage extends StatelessWidget {
             TextButton(
                 onPressed: () {
                   picker.DatePicker.showDateTimePicker(context,
-                      showTitleActions: true, onChanged: (date) {
+                      title: "", showTitleActions: true, onChanged: (date) {
                     print('change $date in time zone ' +
                         date.timeZoneOffset.inHours.toString());
                   }, onConfirm: (date) {
@@ -237,8 +239,8 @@ class HomePage extends StatelessWidget {
                 )),
             TextButton(
                 onPressed: () {
-                  picker.DatePicker.showPicker(context, showTitleActions: true,
-                      onChanged: (date) {
+                  picker.DatePicker.showPicker(context,
+                      showTitleActions: true, title: "", onChanged: (date) {
                     print('change $date in time zone ' +
                         date.timeZoneOffset.inHours.toString());
                   }, onConfirm: (date) {

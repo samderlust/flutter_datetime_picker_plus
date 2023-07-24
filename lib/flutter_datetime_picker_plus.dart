@@ -32,6 +32,7 @@ class DatePicker {
     locale = LocaleType.en,
     DateTime? currentTime,
     picker_theme.DatePickerTheme? theme,
+    required String title,
   }) async {
     return await Navigator.push(
       context,
@@ -50,6 +51,7 @@ class DatePicker {
           minTime: minTime,
           locale: locale,
         ),
+        title: title,
       ),
     );
   }
@@ -67,6 +69,7 @@ class DatePicker {
     locale = LocaleType.en,
     DateTime? currentTime,
     picker_theme.DatePickerTheme? theme,
+    required String title,
   }) async {
     return await Navigator.push(
       context,
@@ -84,6 +87,7 @@ class DatePicker {
           locale: locale,
           showSecondsColumn: showSecondsColumn,
         ),
+        title: title,
       ),
     );
   }
@@ -100,6 +104,7 @@ class DatePicker {
     locale = LocaleType.en,
     DateTime? currentTime,
     picker_theme.DatePickerTheme? theme,
+    required String title,
   }) async {
     return await Navigator.push(
       context,
@@ -116,6 +121,7 @@ class DatePicker {
           currentTime: currentTime,
           locale: locale,
         ),
+        title: title,
       ),
     );
   }
@@ -134,12 +140,14 @@ class DatePicker {
     locale = LocaleType.en,
     DateTime? currentTime,
     picker_theme.DatePickerTheme? theme,
+    required String title,
   }) async {
     return await Navigator.push(
       context,
       _DatePickerRoute(
         showTitleActions: showTitleActions,
         onChanged: onChanged,
+        title: title,
         onConfirm: onConfirm,
         onCancel: onCancel,
         locale: locale,
@@ -168,6 +176,7 @@ class DatePicker {
     locale = LocaleType.en,
     BasePickerModel? pickerModel,
     picker_theme.DatePickerTheme? theme,
+    required String title,
   }) async {
     return await Navigator.push(
       context,
@@ -178,6 +187,7 @@ class DatePicker {
         onCancel: onCancel,
         locale: locale,
         theme: theme,
+        title: title,
         barrierLabel:
             MaterialLocalizations.of(context).modalBarrierDismissLabel,
         pickerModel: pickerModel,
@@ -188,6 +198,7 @@ class DatePicker {
 
 class _DatePickerRoute<T> extends PopupRoute<T> {
   _DatePickerRoute({
+    required this.title,
     this.showTitleActions,
     this.onChanged,
     this.onConfirm,
@@ -208,6 +219,7 @@ class _DatePickerRoute<T> extends PopupRoute<T> {
   final LocaleType? locale;
   final picker_theme.DatePickerTheme theme;
   final BasePickerModel pickerModel;
+  final String title;
 
   @override
   Duration get transitionDuration => const Duration(milliseconds: 200);
@@ -239,6 +251,7 @@ class _DatePickerRoute<T> extends PopupRoute<T> {
       removeTop: true,
       child: _DatePickerComponent(
         onChanged: onChanged,
+        title: title,
         locale: this.locale,
         route: this,
         pickerModel: pickerModel,
@@ -251,12 +264,14 @@ class _DatePickerRoute<T> extends PopupRoute<T> {
 class _DatePickerComponent extends StatefulWidget {
   _DatePickerComponent({
     Key? key,
+    required this.title,
     required this.route,
     required this.pickerModel,
     this.onChanged,
     this.locale,
   }) : super(key: key);
 
+  final String title;
   final DateChangedCallback? onChanged;
 
   final _DatePickerRoute route;
@@ -484,6 +499,15 @@ class _DatePickerState extends State<_DatePickerComponent> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
+          Container(
+            height: theme.titleHeight,
+            alignment: Alignment.center,
+            child: Text(
+              widget.title,
+              textAlign: TextAlign.center,
+              style: theme.itemStyle,
+            ),
+          ),
           Container(
             height: theme.titleHeight,
             child: CupertinoButton(
